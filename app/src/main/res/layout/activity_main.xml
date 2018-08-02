@@ -6,16 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <include
-        layout="@layout/app_bar_layout"
-        android:id="@+id/main_page_toolbar">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    </include>
+        <include
+            layout="@layout/app_bar_layout"
+            android:id="@+id/main_page_toolbar">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="81dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Main Page" />
+        </include>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/main_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        </android.support.design.widget.TabLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_tab_pager"
+        android:layout_width="match_parent"
+        android:layout_height="463dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="104dp">
+
+    </android.support.v4.view.ViewPager>
+
+
+
 </RelativeLayout>
