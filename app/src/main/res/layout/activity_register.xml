@@ -4,14 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#c6915e"
     tools:context=".registerActivity">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="98dp"
-        android:text="register" />
+        android:layout_marginTop="70dp"
+        android:text="@string/logo_name"
+        android:textAllCaps="false"
+        android:textSize="50sp"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/editText_register_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="227dp"
+        android:ems="10"
+        android:hint="@string/name_hint"
+        android:inputType="textMultiLine"
+        android:padding="15dp" />
+
+    <EditText
+        android:id="@+id/editText_register_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="166dp"
+        android:ems="10"
+        android:hint="@string/email_hint"
+        android:inputType="textMultiLine"
+        android:padding="15dp" />
+
+    <EditText
+        android:id="@+id/editText_register_passward"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="103dp"
+        android:ems="10"
+        android:hint="@string/passward_hint"
+        android:inputType="textMultiLine"
+        android:padding="15dp" />
+
+
+    <Button
+        android:id="@+id/button_register_create"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="35dp"
+        android:background="#d95028"
+        android:text="@string/create_button"
+        android:textAllCaps="false" />
+
 </RelativeLayout>

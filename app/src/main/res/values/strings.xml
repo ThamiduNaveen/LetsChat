@@ -3,4 +3,9 @@
     <string name="logo_name">Let\'s Chat</string>
     <string name="have_account_button">Already have an Account?</string>
     <string name="need_new_account_button">Need new Account?</string>
+    <string name="create_button">Create</string>
+    <string name="name_hint">Name..</string>
+    <string name="email_hint">Email...</string>
+    <string name="passward_hint">Passward...</string>
+    <string name="sign_in_button">SIGN IN</string>
 </resources>
