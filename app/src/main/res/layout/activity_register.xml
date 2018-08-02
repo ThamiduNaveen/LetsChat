@@ -46,7 +46,7 @@
         android:layout_marginBottom="166dp"
         android:ems="10"
         android:hint="@string/email_hint"
-        android:inputType="textMultiLine"
+        android:inputType="textMultiLine|textEmailAddress"
         android:padding="15dp" />
 
     <EditText
@@ -58,7 +58,7 @@
         android:layout_marginBottom="103dp"
         android:ems="10"
         android:hint="@string/passward_hint"
-        android:inputType="textMultiLine"
+        android:inputType="textMultiLine|textPassword"
         android:padding="15dp" />
 
 
