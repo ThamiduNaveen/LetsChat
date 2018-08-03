@@ -1,7 +1,10 @@
 package com.example.asus_pc.letschat;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -11,17 +14,21 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private TextView userNameTW,statusTW;
-    private Button changeImageBT,changeStatusBT;
+    private TextView userNameTW, statusTW;
+    private Button changeImageBT, changeStatusBT;
     private CircleImageView profileImage;
 
     private DatabaseReference getUserDataRef;
     private FirebaseAuth mAuth;
+
+    private final static int gallery_pick = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +64,32 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        
+
+        changeImageBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent getGalleryImage = new Intent();
+                getGalleryImage.setAction(Intent.ACTION_GET_CONTENT);
+                getGalleryImage.setType("image/*");
+                startActivityForResult(getGalleryImage, gallery_pick);
+            }
+        });
+
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == gallery_pick && resultCode == RESULT_OK && data != null){
+            Uri imageUri = data.getData();
+            CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).setAspectRatio(1,1)
+                    .start(this);
+
+
+        }
+
+    }
+
 }
