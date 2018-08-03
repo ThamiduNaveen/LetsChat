@@ -69,6 +69,7 @@ public class SettingsActivity extends AppCompatActivity {
                 String thumbImage = dataSnapshot.child("user_thumb_image").getValue().toString();
 
                 Picasso.get().load(image).into(profileImage);
+                
 
                 userNameTW.setText(name);
                 statusTW.setText(status);
