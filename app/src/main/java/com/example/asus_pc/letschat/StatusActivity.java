@@ -28,6 +28,7 @@ public class StatusActivity extends AppCompatActivity {
     private DatabaseReference statusDatabaseRef;
     private FirebaseAuth mAuth;
 
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
