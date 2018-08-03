@@ -69,7 +69,7 @@ public class SettingsActivity extends AppCompatActivity {
                 String thumbImage = dataSnapshot.child("user_thumb_image").getValue().toString();
 
                 Picasso.get().load(image).into(profileImage);
-                
+
 
                 userNameTW.setText(name);
                 statusTW.setText(status);
@@ -89,6 +89,18 @@ public class SettingsActivity extends AppCompatActivity {
                 getGalleryImage.setAction(Intent.ACTION_GET_CONTENT);
                 getGalleryImage.setType("image/*");
                 startActivityForResult(getGalleryImage, gallery_pick);
+            }
+        });
+
+        changeStatusBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String old_status =statusTW.getText().toString();
+
+                Intent settings_status = new Intent(SettingsActivity.this,StatusActivity.class);
+                settings_status.putExtra("current_status",old_status);
+                startActivity(settings_status);
             }
         });
 

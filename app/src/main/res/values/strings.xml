@@ -17,4 +17,6 @@
     <string name="user_name_settings">User Name</string>
     <string name="change_image_settings">Change Image</string>
     <string name="change_status_settings">Change status</string>
+    <string name="change_status_hint">Change status here</string>
+    <string name="save_changes_button">Save Changes</string>
 </resources>
