@@ -16,10 +16,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class registerActivity extends AppCompatActivity {
 
     private Toolbar registerToolbar;
+    private DatabaseReference storeUserDefaultDataref;
 
     private EditText nameET;
     private EditText emailET;
@@ -56,7 +59,7 @@ public class registerActivity extends AppCompatActivity {
         creatBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = nameET.getText().toString();
+                final String name = nameET.getText().toString();
                 String email = emailET.getText().toString();
                 String passward = passwardET.getText().toString();
 
@@ -68,7 +71,7 @@ public class registerActivity extends AppCompatActivity {
 
     }
 
-    private void RegisterAccount(String name, String email, String passward) {
+    private void RegisterAccount(final String name, String email, String passward) {
         if (TextUtils.isEmpty(name)) {
             Toast.makeText(this, "Enter a name for Your account", Toast.LENGTH_SHORT).show();
         }
@@ -87,10 +90,28 @@ public class registerActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Intent register_main = new Intent(registerActivity.this, MainActivity.class);
-                                register_main.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(register_main);
-                                finish();
+
+                                String currentUserID = mAuth.getCurrentUser().getUid();
+
+                                storeUserDefaultDataref = FirebaseDatabase.getInstance().getReference()
+                                        .child("Users").child(currentUserID);
+                                storeUserDefaultDataref.child("user_name").setValue(name);
+                                storeUserDefaultDataref.child("user_status").setValue("I am Using lets chat");
+                                storeUserDefaultDataref.child("user_image").setValue("default_profile");
+                                storeUserDefaultDataref.child("user_thumb_image").setValue("default_image")
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Intent register_main = new Intent(registerActivity.this, MainActivity.class);
+                                                    register_main.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                    startActivity(register_main);
+                                                    finish();
+                                                }
+                                            }
+                                        });
+
+
                             } else {
                                 Toast.makeText(registerActivity.this, "Error Occurred, Try Again ", Toast.LENGTH_LONG).show();
                             }
