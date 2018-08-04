@@ -19,4 +19,5 @@
     <string name="change_status_settings">Change status</string>
     <string name="change_status_hint">Change status here</string>
     <string name="save_changes_button">Save Changes</string>
+    <string name="all_users_button">All Users</string>
 </resources>

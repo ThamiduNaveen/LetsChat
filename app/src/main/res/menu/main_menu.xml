@@ -8,6 +8,12 @@
 
     </item>
 
+    <item android:title="@string/all_users_button"
+        android:id="@+id/button_main_allUsers"
+        app:showAsAction="never">
+
+    </item>
+
     <item android:title="@string/logout_button"
         android:id="@+id/button_main_logout"
         app:showAsAction="never">
